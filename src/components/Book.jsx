@@ -22,7 +22,10 @@ function Book({ book, onUpdateBook }) {
             value={shelf}
             onChange={(e) => onUpdateBook(book, e.target.value)}
           >
-            <option value="none" disabled>
+            {/* Distinct value so it never collides with the real "None" option;
+                otherwise an unshelved book (shelf === "none") would select this
+                disabled placeholder instead of "None". */}
+            <option value="move" disabled>
               Move to...
             </option>
             <option value="currentlyReading">Currently Reading</option>
